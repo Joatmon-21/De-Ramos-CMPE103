@@ -13,10 +13,9 @@ namespace test{
 		static void Main(string[]args){
 			
 			int winner = 0;
+			int turnNumber = 0;
 
 			int userInput;
-
-			int turnNumber = 0;
 
 			string tile1 = "1";
 			string tile2 = "2";
@@ -63,9 +62,6 @@ namespace test{
 				Console.Write("Please choose a tile: ");
 				userInput = Convert.ToInt16(Console.ReadLine());
 				Console.WriteLine();
-
-				
-				
 
 				if(turnNumber%2 == 0){			
 
@@ -162,7 +158,6 @@ namespace test{
 							break;	
 						
 						}
-
 					}else{
 						switch(userInput){
 
@@ -255,7 +250,6 @@ namespace test{
 							turnNumber++;
 							tile9Status = 1;
 							break;	
-						
 					}
 				}
 			}
