@@ -12,10 +12,10 @@ namespace test{
 		
 		static void Main(string[]args){
 			
-			int winner = 0;
+			int gameOver = 0;
 			int turnNumber = 0;
 
-			int userInput;
+			int userInput = 0;
 
 			string tile1 = "1";
 			string tile2 = "2";
@@ -39,7 +39,7 @@ namespace test{
 
 
 				
-			while(winner == 0){
+			while(gameOver == 0){
 				Console.WriteLine();
 				Console.WriteLine("Turn Number: " + (turnNumber+1));
 				if(turnNumber%2 == 0){
@@ -62,42 +62,42 @@ namespace test{
 				if(turnNumber%2 == 0){
 					if(tile1 == tile2 && tile2 == tile3){
 						Console.WriteLine("Game Over. Player O won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;				
 					}
 					if(tile4 == tile5 && tile5 == tile6){
 						Console.WriteLine("Game Over. Player O won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;
 					}
 					if(tile7 == tile8 && tile8 == tile9){
 						Console.WriteLine("Game Over. Player O won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;				
 					}
 					if(tile1 == tile4 && tile4 == tile7){
 						Console.WriteLine("Game Over. Player O won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;
 					}
 					if(tile2 == tile5 && tile5 == tile8){
 						Console.WriteLine("Game Over. Player O won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;				
 					}
 					if(tile3 == tile6 && tile6 == tile9){
 						Console.WriteLine("Game Over. Player O won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;
 					}
 					if(tile1 == tile5 && tile5 == tile9){
 						Console.WriteLine("Game Over. Player O won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;				
 					}
 					if(tile3 == tile5 && tile5 == tile7){
 						Console.WriteLine("Game Over. Player O won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;
 					}
 					if(
@@ -111,49 +111,49 @@ namespace test{
 						tile8Status == 1 && 
 						tile9Status == 1){
 							Console.WriteLine("Game Over. The game resulted in a tie.");
-							winner = 1;
+							gameOver = 1;
 							break;
 
 					}
 				}else{
 					if(tile1 == tile2 && tile2 == tile3){
 						Console.WriteLine("Game Over. Player X won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;				
 					}
 					if(tile4 == tile5 && tile5 == tile6){
 						Console.WriteLine("Game Over. Player X won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;
 					}
 					if(tile7 == tile8 && tile8 == tile9){
 						Console.WriteLine("Game Over. Player X won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;				
 					}
 					if(tile1 == tile4 && tile4 == tile7){
 						Console.WriteLine("Game Over. Player X won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;
 					}
 					if(tile2 == tile5 && tile5 == tile8){
 						Console.WriteLine("Game Over. Player X won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;				
 					}
 					if(tile3 == tile6 && tile6 == tile9){
 						Console.WriteLine("Game Over. Player X won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;
 					}
 					if(tile1 == tile5 && tile5 == tile9){
 						Console.WriteLine("Game Over. Player X won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;				
 					}
 					if(tile3 == tile5 && tile5 == tile7){
 						Console.WriteLine("Game Over. Player X won!");
-						winner = 1;		
+						gameOver = 1;		
 						break;
 					}
 					if(
@@ -167,14 +167,26 @@ namespace test{
 						tile8Status == 1 && 
 						tile9Status == 1){
 						Console.WriteLine("Game Over. The game resulted in a tie.");
-						winner = 1;
+						gameOver = 1;
 						break;
 
 					}
 				}
 
 				Console.Write("Please choose a tile: ");
-				userInput = Convert.ToInt16(Console.ReadLine());
+
+				try{
+					userInput = Convert.ToInt16(Console.ReadLine());		
+				}catch(System.FormatException){
+					Console.WriteLine();
+					Console.WriteLine("Invalid input. Please choose a number from 1 to 9 only.");
+					continue;
+				}catch(System.OverflowException){
+					Console.WriteLine();
+					Console.WriteLine("Invalid input. Please choose a number from 1 to 9 only.");
+					continue;
+				}
+						
 				Console.WriteLine();
 
 				if(turnNumber%2 == 0){			
@@ -270,7 +282,10 @@ namespace test{
 							turnNumber++;
 							tile9Status = 1;
 							break;	
-						
+							
+						default:
+							Console.WriteLine("Invalid input. Please choose a number from 1 to 9 only.");
+							break;
 						}
 					}else{
 						switch(userInput){
@@ -364,6 +379,10 @@ namespace test{
 							turnNumber++;
 							tile9Status = 1;
 							break;	
+
+						default:
+							Console.WriteLine("Invalid input. Please choose a number from 1 to 9 only.");
+							break;
 					}
 				}
 			}
