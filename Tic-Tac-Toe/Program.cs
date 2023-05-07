@@ -57,7 +57,121 @@ namespace test{
 				Console.WriteLine("-------------------");
 				Console.WriteLine();
 
-				//where you put the winner checker				
+				//where you put the winner checker
+
+				if(turnNumber%2 == 0){
+					if(tile1 == tile2 && tile2 == tile3){
+						Console.WriteLine("Game Over. Player O won!");
+						winner = 1;		
+						break;				
+					}
+					if(tile4 == tile5 && tile5 == tile6){
+						Console.WriteLine("Game Over. Player O won!");
+						winner = 1;		
+						break;
+					}
+					if(tile7 == tile8 && tile8 == tile9){
+						Console.WriteLine("Game Over. Player O won!");
+						winner = 1;		
+						break;				
+					}
+					if(tile1 == tile4 && tile4 == tile7){
+						Console.WriteLine("Game Over. Player O won!");
+						winner = 1;		
+						break;
+					}
+					if(tile2 == tile5 && tile5 == tile8){
+						Console.WriteLine("Game Over. Player O won!");
+						winner = 1;		
+						break;				
+					}
+					if(tile3 == tile6 && tile6 == tile9){
+						Console.WriteLine("Game Over. Player O won!");
+						winner = 1;		
+						break;
+					}
+					if(tile1 == tile5 && tile5 == tile9){
+						Console.WriteLine("Game Over. Player O won!");
+						winner = 1;		
+						break;				
+					}
+					if(tile3 == tile5 && tile5 == tile7){
+						Console.WriteLine("Game Over. Player O won!");
+						winner = 1;		
+						break;
+					}
+					if(
+						tile1Status == 1 && 
+						tile2Status == 1 && 
+						tile3Status == 1 && 
+						tile4Status == 1 && 
+						tile5Status == 1 &&
+						tile6Status == 1 &&  
+						tile7Status == 1 &&  
+						tile8Status == 1 && 
+						tile9Status == 1){
+							Console.WriteLine("Game Over. The game resulted in a tie.");
+							winner = 1;
+							break;
+
+					}
+				}else{
+					if(tile1 == tile2 && tile2 == tile3){
+						Console.WriteLine("Game Over. Player X won!");
+						winner = 1;		
+						break;				
+					}
+					if(tile4 == tile5 && tile5 == tile6){
+						Console.WriteLine("Game Over. Player X won!");
+						winner = 1;		
+						break;
+					}
+					if(tile7 == tile8 && tile8 == tile9){
+						Console.WriteLine("Game Over. Player X won!");
+						winner = 1;		
+						break;				
+					}
+					if(tile1 == tile4 && tile4 == tile7){
+						Console.WriteLine("Game Over. Player X won!");
+						winner = 1;		
+						break;
+					}
+					if(tile2 == tile5 && tile5 == tile8){
+						Console.WriteLine("Game Over. Player X won!");
+						winner = 1;		
+						break;				
+					}
+					if(tile3 == tile6 && tile6 == tile9){
+						Console.WriteLine("Game Over. Player X won!");
+						winner = 1;		
+						break;
+					}
+					if(tile1 == tile5 && tile5 == tile9){
+						Console.WriteLine("Game Over. Player X won!");
+						winner = 1;		
+						break;				
+					}
+					if(tile3 == tile5 && tile5 == tile7){
+						Console.WriteLine("Game Over. Player X won!");
+						winner = 1;		
+						break;
+					}
+					if(
+						tile1Status == 1 && 
+						tile2Status == 1 && 
+						tile3Status == 1 && 
+						tile4Status == 1 && 
+						tile5Status == 1 &&
+						tile6Status == 1 &&  
+						tile7Status == 1 &&  
+						tile8Status == 1 && 
+						tile9Status == 1){
+						Console.WriteLine("Game Over. The game resulted in a tie.");
+						winner = 1;
+						break;
+
+					}
+				}
 
 				Console.Write("Please choose a tile: ");
 				userInput = Convert.ToInt16(Console.ReadLine());
