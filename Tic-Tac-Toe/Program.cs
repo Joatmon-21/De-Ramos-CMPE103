@@ -23,7 +23,7 @@ namespace Tic_Tac_Toe{
             }
         
             // Initializing tile status values. Used to check if a tile is filled. 0 = unfilled, 1 = filled.
-            for(int loop = 0; loop <= 8; loop++){
+            for(int loop = 0; loop <= tile.Count-1; loop++){
                 tileStatus.Add(0);
             }
         }                        
@@ -31,6 +31,7 @@ namespace Tic_Tac_Toe{
         static void playerO_WinnerMessage(){
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Game Over. Player O won!");
+			Console.Beep();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
 			Console.WriteLine("Would you like to play again? 1 = Yes or 0 = No?");
@@ -40,6 +41,7 @@ namespace Tic_Tac_Toe{
         static void playerX_WinnerMessage(){
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Game Over. Player X won!");
+			Console.Beep();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
 			Console.WriteLine("Would you like to play again? 1 = Yes or 0 = No?");
@@ -49,28 +51,34 @@ namespace Tic_Tac_Toe{
         static void invalidInputMessageForReset(){
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine();
+			Console.Beep();
+			Console.Beep();
             Console.WriteLine("!!! Invalid input. Please choose either 1 for yes and 0 for no only !!!");
             Console.ForegroundColor = ConsoleColor.White;
         }
 
         static void invalidInputMessageForTileInput(){
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Red;		
+			Console.Beep();
+			Console.Beep();
             Console.WriteLine("!!! Invalid input. Please choose a number from 1 to 9 only !!!");
             Console.ForegroundColor = ConsoleColor.White;
         }
 
         static void invalidInputMessageForFilledTile(){
             Console.ForegroundColor = ConsoleColor.Red;
+			Console.Beep();
+			Console.Beep();
             Console.WriteLine("!!! Tile is already filled. Please Choose a different tile !!!");
             Console.ForegroundColor = ConsoleColor.White;
         }
         static void resetLists(){
 
-            for(int loop = 0; loop <= 8; loop++){
+            for(int loop = 0; loop <= tile.Count-1; loop++){
                 tile[loop] = Convert.ToString(loop+1);
             }
 
-            for(int loop = 0; loop <=8; loop++){
+            for(int loop = 0; loop <= tileStatus.Count-1; loop++){
                 tileStatus[loop] = 0;
             }
 
@@ -81,6 +89,7 @@ namespace Tic_Tac_Toe{
 			// Stops the loop when a winning condition or tie has been met
 			int gameOver = 0;
             int gameNumber = 1;
+			int tieCounter = 0;
 
             int X_Wins = 0;
             int O_Wins = 0;			
@@ -94,14 +103,17 @@ namespace Tic_Tac_Toe{
 			string userInput = "0";
 
             initializeLists();                                			          
-				
-			while(gameOver == 0){      
+
+			Console.Clear();
+
+			while(gameOver == 0){				      
 
 				Console.WriteLine();
                 Console.WriteLine("Number of Games: " + gameNumber);
 				Console.WriteLine("Turn Number: " + (turnNumber+1));
                 Console.WriteLine("Player X Wins: " + X_Wins);
                 Console.WriteLine("Player O Wins: " + O_Wins);
+				Console.WriteLine("Number of ties: " + tieCounter);
 				Console.WriteLine();
 				// Turn numbers with even values are turns for player X while turn numbers with odd values are for player O.
 				if(turnNumber%2 == 0){
@@ -109,16 +121,36 @@ namespace Tic_Tac_Toe{
 				}else{
 					Console.WriteLine("Player O's Turn");
 				}
-				Console.WriteLine();
-				Console.WriteLine("-------------------");
-				Console.WriteLine("|  " + tile[0] + "  |  " + tile[1] + "  |  " +  tile[2]  + "  |");
-				Console.WriteLine("-------------------");
-				Console.WriteLine("|  " + tile[3] + "  |  " + tile[4] + "  |  " +  tile[5]  + "  |");
-				Console.WriteLine("-------------------");
-				Console.WriteLine("|  " + tile[6] + "  |  " + tile[7] + "  |  " +  tile[8]  + "  |");
-				Console.WriteLine("-------------------");
-				Console.WriteLine();
 
+				Console.WriteLine();
+				Console.WriteLine("-------------------");
+				
+				for(int loop = 0; loop <= 8; loop++){		
+
+					if(loop%3 == 0){						
+						Console.Write("|");
+					}
+
+					if(tile[loop] == "X"){
+						Console.ForegroundColor = ConsoleColor.DarkYellow;
+						Console.Write("  " + tile[loop] + "  ");
+						Console.ForegroundColor = ConsoleColor.White;
+						Console.Write("|");
+					}else if(tile[loop] == "O"){
+						Console.ForegroundColor = ConsoleColor.Blue;
+						Console.Write("  " + tile[loop] + "  ");
+						Console.ForegroundColor = ConsoleColor.White;
+						Console.Write("|");
+					}else{
+						Console.Write("  " + tile[loop] + "  ");
+						Console.Write("|");
+					}
+
+					if(loop != 0 && (loop+1)%3 == 0){
+						Console.WriteLine();
+						Console.WriteLine("-------------------");
+					}					
+				}				
 				
 				/* 
 				Winner checker system. 
@@ -127,7 +159,7 @@ namespace Tic_Tac_Toe{
 				
 				if(turnNumber%2 == 0){
 					if(tile[0] == tile[1] && tile[1] == tile[2]){
-						playerO_WinnerMessage();
+						playerO_WinnerMessage();						
                         userInput = Console.ReadLine();
 						if(userInput == "1"){
                             gameNumber++;
@@ -147,6 +179,7 @@ namespace Tic_Tac_Toe{
                         }	
 							
 					}
+
 					if(tile[3] == tile[4] && tile[4] == tile[5]){
 						playerO_WinnerMessage();
                         userInput = Console.ReadLine();
@@ -306,6 +339,7 @@ namespace Tic_Tac_Toe{
                         userInput = Console.ReadLine();
 						if(userInput == "1"){
                             gameNumber++;
+							tieCounter++;
                             turnNumber = 0;
                             gameOver = 0;
                             resetLists();
@@ -496,6 +530,7 @@ namespace Tic_Tac_Toe{
                             userInput = Console.ReadLine();
 						    if(userInput == "1"){
                             gameNumber++;
+							tieCounter++;
                             turnNumber = 0;
                             resetLists();
                             continue;
@@ -512,6 +547,7 @@ namespace Tic_Tac_Toe{
 					}
 				}
 
+				Console.WriteLine();
 				Console.Write("Please choose a tile: ");
 
 				try{
@@ -626,7 +662,8 @@ namespace Tic_Tac_Toe{
 							invalidInputMessageForTileInput();
 							break;
 						}
-					}else{
+					}else{							
+
 						switch(userInput){
 
 						case "1":
