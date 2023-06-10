@@ -91,9 +91,10 @@ namespace Tic_Tac_Toe{
 			
 			// Stops the loop when a winning condition or tie has been met
 			int gameOver = 0;
-			int willChooseCustomCharacterC1 = 0;
-			int hasChosenCharacter1 = 0;
-			int hasChosenCharacter2 = 0;			
+			bool willChooseCustomCharacter1 = false;
+			bool willChooseCustomCharacter2 = false;
+			bool hasChosenCharacter1 = false;
+			bool hasChosenCharacter2 = false;			
             int gameNumber = 1;
 			int tieCounter = 0;
 
@@ -112,14 +113,17 @@ namespace Tic_Tac_Toe{
 
 			Console.Clear();
 
-			while(willChooseCustomCharacterC1 == 0){ 				
-				Console.WriteLine("Default Avatars:");
-				Console.WriteLine("Player 1: X");
-				Console.WriteLine("Player 2: O");			
+			while(willChooseCustomCharacter1 == false){ 	
+				Console.WriteLine();
+				Console.WriteLine("Tic-Tac-Toe");	
+				Console.WriteLine();		
+				Console.WriteLine("Current Avatars:");
+				Console.WriteLine("Player 1: " + player1Character);
+				Console.WriteLine("Player 2: " + player2Character);			
 				
 				Console.WriteLine();
 
-				Console.WriteLine("Would you like to choose a custom avatar for player 1? : ");
+				Console.WriteLine("Would you like to choose a custom avatar for player 1?");
 				Console.WriteLine("1 = Yes | 0 = No");
 				Console.Write("Enter your choice: ");
 				userInput = Console.ReadLine();
@@ -128,35 +132,42 @@ namespace Tic_Tac_Toe{
 					Console.Beep();
 					Console.Beep();
 					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine();
 					Console.WriteLine("!!! Invalid input: Please choose either 1 or 0 only !!!");
 					Console.ForegroundColor = ConsoleColor.White;
+				}else if(userInput == "1"){
+					willChooseCustomCharacter1 = true;
 				}else{
-					willChooseCustomCharacterC1 = 1;
+					break;
 				}
 			}
 
-			if(willChooseCustomCharacterC1 == 1){
 
-				while(hasChosenCharacter1 == 0){
+			if(willChooseCustomCharacter1 == true){
+
+				while(hasChosenCharacter1 == false){
+					Console.WriteLine();
 					Console.Write("Choose a letter for player 1: ");					
 					player1Character = Console.ReadLine();
-					bool lenghtSatisfiedC1 = true;
-					bool formatSatisfiedC1 = true;										
+					bool lengthSatisfiedCharacter1 = true;
+					bool formatSatisfiedCharacter1 = true;										
 					
 					if(player1Character.Length > 1){						
 						Console.Beep();
 						Console.Beep();
 						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine();
 						Console.WriteLine("!!! Invalid Input: Please use one character only !!!");
 						Console.ForegroundColor = ConsoleColor.White;						
-						lenghtSatisfiedC1 = false;
+						lengthSatisfiedCharacter1 = false;
 					}if(player1Character.Length < 0){
 						Console.Beep();
 						Console.Beep();
 						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine();
 						Console.WriteLine("!!! Invalid Input: Please choose a character !!!");
 						Console.ForegroundColor = ConsoleColor.White;						
-						lenghtSatisfiedC1 = false;
+						lengthSatisfiedCharacter1 = false;
 					}
 					if(
 					player1Character != "A" &&
@@ -213,118 +224,172 @@ namespace Tic_Tac_Toe{
 					player1Character != "z"){						
 						Console.Beep();
 						Console.Beep();
-						Console.ForegroundColor = ConsoleColor.Red;
+						Console.ForegroundColor = ConsoleColor.Red;						
+						Console.WriteLine();
 						Console.WriteLine("!!! Invalid Input: Please choose a single letter only !!!");
 						Console.ForegroundColor = ConsoleColor.White;
-						formatSatisfiedC1 = false;												
-					}else if(lenghtSatisfiedC1 && formatSatisfiedC1){
-						hasChosenCharacter1 = 1;
+						formatSatisfiedCharacter1 = false;												
+					}else if(lengthSatisfiedCharacter1 && formatSatisfiedCharacter1){
+						hasChosenCharacter1 = true;
 					}
 				}
+			}			
 
-				while(hasChosenCharacter2 == 0){
-					Console.Write("Choose a letter for player 2: ");
-					player2Character = Convert.ToString(Console.ReadLine());
-					bool lenghtSatisfiedC2 = true;
-					bool formatSatisfiedC2 = true;
-					if(player2Character.Length > 1){
+			while(willChooseCustomCharacter2 == false){ 	
+				Console.WriteLine();
+				Console.WriteLine("Tic-Tac-Toe");	
+				Console.WriteLine();		
+				Console.WriteLine("Current Avatars:");
+				Console.WriteLine("Player 1: " + player1Character);
+				Console.WriteLine("Player 2: " + player2Character);			
+				
+				Console.WriteLine();
+
+				Console.WriteLine("Would you like to choose a custom avatar for player 2?");
+				Console.WriteLine("1 = Yes | 0 = No");
+				Console.Write("Enter your choice: ");
+				userInput = Console.ReadLine();
+
+				if(userInput != "1" && userInput != "0"){
+					Console.Beep();
+					Console.Beep();
+					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine();
+					Console.WriteLine("!!! Invalid input: Please choose either 1 or 0 only !!!");
+					Console.ForegroundColor = ConsoleColor.White;
+				}else if(userInput == "1"){
+					willChooseCustomCharacter2 = true;
+				}else{
+					break;
+				}
+			}
+
+
+			if(willChooseCustomCharacter2 == true){
+
+				while(hasChosenCharacter2 == false){
+					Console.WriteLine();
+					Console.Write("Choose a letter for player 2: ");					
+					player2Character = Console.ReadLine();
+					bool lengthSatisfiedCharacter2 = true;
+					bool formatSatisfiedCharacter2 = true;										
+					
+					if(player2Character.Length > 1){						
 						Console.Beep();
 						Console.Beep();
 						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine();
 						Console.WriteLine("!!! Invalid Input: Please use one character only !!!");
 						Console.ForegroundColor = ConsoleColor.White;						
+						lengthSatisfiedCharacter2 = false;
 					}if(player2Character.Length < 0){
 						Console.Beep();
 						Console.Beep();
 						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine();
 						Console.WriteLine("!!! Invalid Input: Please choose a character !!!");
 						Console.ForegroundColor = ConsoleColor.White;						
-						lenghtSatisfiedC2 = false;
-					}if(player2Character == player1Character){
+						lengthSatisfiedCharacter2 = false;
+					}
+					if(player2Character == player1Character){
 						Console.Beep();
 						Console.Beep();
 						Console.ForegroundColor = ConsoleColor.Red;
-						Console.WriteLine("!!! Invalid Input: player 1 and player 2 cannot have the same character !!!");
-						Console.ForegroundColor = ConsoleColor.White;
-						formatSatisfiedC2 = false;
-					}if(
-					player1Character != "A" &&
-					player1Character != "B"	&&
-					player1Character != "C"	&&
-					player1Character != "D"	&&
-					player1Character != "E"	&&
-					player1Character != "F" &&
-					player1Character != "G"	&&
-					player1Character != "H"	&&
-					player1Character != "I"	&&
-					player1Character != "J" &&
-					player1Character != "K" &&
-					player1Character != "L"	&&
-					player1Character != "M"	&&
-					player1Character != "N"	&&
-					player1Character != "O"	&&
-					player1Character != "P" &&
-					player1Character != "Q"	&&
-					player1Character != "R"	&&
-					player1Character != "S"	&&
-					player1Character != "T" &&
-					player1Character != "U" &&
-					player1Character != "V"	&&
-					player1Character != "W"	&&
-					player1Character != "X"	&&
-					player1Character != "Y"	&&
-					player1Character != "Z" &&
-					player1Character != "a"	&&
-					player1Character != "b"	&&
-					player1Character != "c"	&&
-					player1Character != "d" &&
-					player1Character != "e" &&
-					player1Character != "f"	&&
-					player1Character != "g"	&&
-					player1Character != "h"	&&
-					player1Character != "i"	&&
-					player1Character != "j" &&
-					player1Character != "k"	&&
-					player1Character != "l"	&&
-					player1Character != "m"	&&
-					player1Character != "n" &&
-					player1Character != "o" &&
-					player1Character != "p"	&&
-					player1Character != "q"	&&
-					player1Character != "r"	&&
-					player1Character != "s"	&&
-					player1Character != "t" &&
-					player1Character != "u"	&&
-					player1Character != "v"	&&
-					player1Character != "w"	&&
-					player1Character != "x" &&
-					player1Character != "y"	&&
-					player1Character != "z"){
+						Console.WriteLine();
+						Console.WriteLine("!!! Invalid Input: Player 1 and player 2 cannot have the same character !!!");
+						Console.ForegroundColor = ConsoleColor.White;						
+						lengthSatisfiedCharacter2 = false;
+						formatSatisfiedCharacter2 = false;
+						lengthSatisfiedCharacter2 = false;
+					}
+					if(
+					player2Character != "A" &&
+					player2Character != "B"	&&
+					player2Character != "C"	&&
+					player2Character != "D"	&&
+					player2Character != "E"	&&
+					player2Character != "F" &&
+					player2Character != "G"	&&
+					player2Character != "H"	&&
+					player2Character != "I"	&&
+					player2Character != "J" &&
+					player2Character != "K" &&
+					player2Character != "L"	&&
+					player2Character != "M"	&&
+					player2Character != "N"	&&
+					player2Character != "O"	&&
+					player2Character != "P" &&
+					player2Character != "Q"	&&
+					player2Character != "R"	&&
+					player2Character != "S"	&&
+					player2Character != "T" &&
+					player2Character != "U" &&
+					player2Character != "V"	&&
+					player2Character != "W"	&&
+					player2Character != "X"	&&
+					player2Character != "Y"	&&
+					player2Character != "Z" &&
+					player2Character != "a"	&&
+					player2Character != "b"	&&
+					player2Character != "c"	&&
+					player2Character != "d" &&
+					player2Character != "e" &&
+					player2Character != "f"	&&
+					player2Character != "g"	&&
+					player2Character != "h"	&&
+					player2Character != "i"	&&
+					player2Character != "j" &&
+					player2Character != "k"	&&
+					player2Character != "l"	&&
+					player2Character != "m"	&&
+					player2Character != "n" &&
+					player2Character != "o" &&
+					player2Character != "p"	&&
+					player2Character != "q"	&&
+					player2Character != "r"	&&
+					player2Character != "s"	&&
+					player2Character != "t" &&
+					player2Character != "u"	&&
+					player2Character != "v"	&&
+					player2Character != "w"	&&
+					player2Character != "x" &&
+					player2Character != "y"	&&
+					player2Character != "z"){						
 						Console.Beep();
 						Console.Beep();
-						Console.ForegroundColor = ConsoleColor.Red;
+						Console.ForegroundColor = ConsoleColor.Red;						
+						Console.WriteLine();
 						Console.WriteLine("!!! Invalid Input: Please choose a single letter only !!!");
 						Console.ForegroundColor = ConsoleColor.White;
-					}else{
-						hasChosenCharacter2 = 1;
+						formatSatisfiedCharacter2 = false;												
+					}else if(lengthSatisfiedCharacter2 && formatSatisfiedCharacter2){
+						hasChosenCharacter2 = true;
 					}
 				}
-			}										
+			}
 
 			while(gameOver == 0){				      
 
 				Console.WriteLine();
                 Console.WriteLine("Number of Games: " + gameNumber);
 				Console.WriteLine("Turn Number: " + (turnNumber+1));
-                Console.WriteLine("Player " + player1Character + " Wins: " +player1_Wins);
+                Console.WriteLine("Player " + player1Character + " Wins: " + player1_Wins);
                 Console.WriteLine("Player " + player2Character + " Wins: " + player2_Wins);
 				Console.WriteLine("Number of ties: " + tieCounter);
 				Console.WriteLine();
 				// Turn numbers with even values are turns for player X while turn numbers with odd values are for player O.
 				if(turnNumber%2 == 0){
-					Console.WriteLine("Player " + player1Character + "'s Turn");
+					Console.Write("Player ");
+					Console.ForegroundColor = ConsoleColor.DarkYellow;
+					Console.Write(player1Character);
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("'s Turn");
 				}else{
-					Console.WriteLine("Player " + player2Character + "'s Turn");
+					Console.Write("Player ");
+					Console.ForegroundColor = ConsoleColor.Blue;
+					Console.Write(player2Character);
+					Console.ForegroundColor = ConsoleColor.White;
+					Console.WriteLine("'s Turn");
 				}
 
 				Console.WriteLine();
