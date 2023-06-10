@@ -600,6 +600,7 @@ namespace Tic_Tac_Toe{
 						tileStatus[6] == 1 &&  
 						tileStatus[7] == 1 && 
 						tileStatus[8] == 1){
+							Console.Beep();
                             Console.ForegroundColor = ConsoleColor.Green;
 							Console.WriteLine("Game Over. The game resulted in a tie.");
                             Console.ForegroundColor = ConsoleColor.White;
@@ -793,8 +794,10 @@ namespace Tic_Tac_Toe{
 						tileStatus[6] == 1 &&  
 						tileStatus[7] == 1 && 
 						tileStatus[8] == 1){
-
-						    Console.WriteLine("Game Over. The game resulted in a tie.");                            						    
+							Console.Beep();
+                            Console.ForegroundColor = ConsoleColor.Green;
+							Console.WriteLine("Game Over. The game resulted in a tie.");
+                            Console.ForegroundColor = ConsoleColor.White;                            						    
                             Console.WriteLine("Would you like to play again? 1 = Yes or 0 = No?");
 							Console.Write("Enter your choice: ");
                             userInput = Console.ReadLine();
