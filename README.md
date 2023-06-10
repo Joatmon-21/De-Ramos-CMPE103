@@ -3,9 +3,9 @@
 ## Tic-Tac-Toe
 
 ### Planned Features:
-- ![](https://progress-bar.dev/100/) Custom Character Selection
+- ![x](https://progress-bar.dev/100/) Custom Character Selection
 - ![](https://progress-bar.dev/0/) Custom Color Selection
--[] Add an option to play against the computer with varying difficulties:
+- [ ] Add an option to play against the computer with varying difficulties:
   - ![](https://progress-bar.dev/0/) Easy - Randomizer
   - ![](https://progress-bar.dev/0/) Medium
   - ![](https://progress-bar.dev/0/) Hard - Minimax Algorithm
