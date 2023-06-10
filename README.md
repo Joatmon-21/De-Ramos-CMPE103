@@ -4,4 +4,4 @@
 
 ### Planned Features
 - ![100%](https://progress-bar.dev/100/) Custom Character Selection
-- ![0%](https://progress-bar.dev/100/) Custom Color Selection
+- ![0%](https://progress-bar.dev/0/) Custom Color Selection
