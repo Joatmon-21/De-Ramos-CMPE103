@@ -4,7 +4,7 @@
 
 ### Planned Features:
 - ![](https://progress-bar.dev/100/) Custom Character Selection
-- ![](https://progress-bar.dev/40/) Custom Color Selection
+- ![](https://progress-bar.dev/45/) Custom Color Selection
 - [ ] Add an option to play against the computer with varying difficulties:
   - ![](https://progress-bar.dev/0/) Easy - Randomizer
   - ![](https://progress-bar.dev/0/) Medium
