@@ -15,4 +15,4 @@
 > Apparently, using chars is similar to the function of ALT+NUM, or would refer the the unicode characters. This would make debugging a big hassle so the idea is scrapped.
 
 - Try adding documentation
-> It's a good thing to have so why not try? At least you can sleep tightly knowing you aren't affected by the memes mentioning no documentation on your code "¯\_(ツ)_/¯"
+> It's a good thing to have so why not try? At least you can sleep tightly knowing you aren't affected by the memes mentioning no documentation on your code :sassy_man:
