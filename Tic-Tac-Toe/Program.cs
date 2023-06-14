@@ -16,7 +16,10 @@ namespace Tic_Tac_Toe{
         static List<int> tileStatus = new List<int>();
 
 		static string player1Character = "X";
-		static string player2Character = "O";
+		static string player2Character = "O";		
+		static int player1ColorNum = 1;		
+		static int player2ColorNum = 7;
+		
 
         static void initializeLists(){
             
@@ -88,13 +91,29 @@ namespace Tic_Tac_Toe{
         }
 
         static void Main(string[]args){
+
+			ConsoleColor[] characterColorOptions =  new ConsoleColor[] {
+			ConsoleColor.Blue,			//0
+			ConsoleColor.Cyan,			//1
+			ConsoleColor.DarkBlue,		//2
+			ConsoleColor.DarkCyan,		//3
+			ConsoleColor.DarkMagenta,	//4
+			ConsoleColor.DarkRed,		//5
+			ConsoleColor.DarkYellow,	//6
+			ConsoleColor.Magenta,		//7
+			ConsoleColor.Yellow			//8
+			};
 			
 			// Stops the loop when a winning condition or tie has been met
 			int gameOver = 0;
 			bool willChooseCustomCharacter1 = false;
 			bool willChooseCustomCharacter2 = false;
 			bool hasChosenCharacter1 = false;
-			bool hasChosenCharacter2 = false;			
+			bool hasChosenCharacter2 = false;		
+			bool willChooseCustomColor1 = false;
+			bool willChooseCustomColor2 = false;
+			bool hasChosenCustomColor1 = false;
+			bool hasChosenCustomColor2 = false;
             int gameNumber = 1;
 			int tieCounter = 0;
 
@@ -169,6 +188,7 @@ namespace Tic_Tac_Toe{
 						Console.ForegroundColor = ConsoleColor.White;						
 						lengthSatisfiedCharacter1 = false;
 					}
+					// Would definitely benefit from a RegEx function, but it hasn't been taught yet so I'll stick with this for the moment
 					if(
 					player1Character != "A" &&
 					player1Character != "B"	&&
@@ -291,6 +311,7 @@ namespace Tic_Tac_Toe{
 						Console.ForegroundColor = ConsoleColor.White;						
 						lengthSatisfiedCharacter2 = false;
 					}
+					// Would need another if() statement since differentiation would be better for better visibility
 					if(player2Character == player1Character){
 						Console.Beep();
 						Console.Beep();
@@ -303,6 +324,7 @@ namespace Tic_Tac_Toe{
 						lengthSatisfiedCharacter2 = false;
 					}
 					if(
+					// Would definitely benefit from a RegEx function, but it hasn't been taught yet so I'll stick with this for the moment
 					player2Character != "A" &&
 					player2Character != "B"	&&
 					player2Character != "C"	&&
@@ -368,6 +390,175 @@ namespace Tic_Tac_Toe{
 				}
 			}
 
+			while(willChooseCustomColor1 == false){ 	
+				Console.WriteLine();
+				Console.WriteLine("Tic-Tac-Toe");	
+				Console.WriteLine();		
+				Console.WriteLine("Current Colors:");
+				Console.WriteLine("Player 1: " + characterColorOptions[player1ColorNum]);
+				Console.WriteLine("Player 2: " + characterColorOptions[player2ColorNum]);
+				
+				Console.WriteLine();
+
+				Console.WriteLine("Would you like to choose a custom color for player 1?");
+				Console.WriteLine("1 = Yes | 0 = No");
+				Console.Write("Enter your choice: ");
+				userInput = Console.ReadLine();
+
+				if(userInput != "1" && userInput != "0"){
+					Console.Beep();
+					Console.Beep();
+					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine();
+					Console.WriteLine("!!! Invalid input: Please choose either 1 or 0 only !!!");
+					Console.ForegroundColor = ConsoleColor.White;
+				}else if(userInput == "1"){
+					willChooseCustomColor1 = true;
+				}else{
+					break;
+				}
+			}
+
+			if(willChooseCustomColor1 == true){				
+
+				while(hasChosenCustomColor1 == false){
+					bool colorSelectionSatisfied1 = true;
+					bool color1ExceptionHandled = false;
+					Console.WriteLine();
+					Console.WriteLine("Choices:");
+					for(int loop = 0; loop <= 8; loop++){
+						Console.WriteLine((loop+1) + ". " + characterColorOptions[loop]);
+					}
+					Console.WriteLine();
+					Console.Write("Choose a color for player 1: ");
+					try{
+						player1ColorNum = (Convert.ToInt32(Console.ReadLine())-1);
+					}catch(System.FormatException){
+						Console.WriteLine();
+						Console.Beep();
+						Console.Beep();
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine();
+						Console.WriteLine("!!! Invalid input: Please choose a number from 1 to 10 only !!!");
+						Console.ForegroundColor = ConsoleColor.White;
+						colorSelectionSatisfied1 = false;
+						color1ExceptionHandled = true;
+					}catch(System.OverflowException){
+						Console.WriteLine();
+						Console.Beep();
+						Console.Beep();
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine();
+						Console.WriteLine("!!! Invalid input: Please choose a number from 1 to 10 only !!!");
+						Console.ForegroundColor = ConsoleColor.White;
+						colorSelectionSatisfied1 = false;
+						color1ExceptionHandled = true;
+					}								
+					
+					if((player1ColorNum < 0 || player1ColorNum > 8) && color1ExceptionHandled == false){
+						Console.WriteLine();
+						Console.Beep();
+						Console.Beep();
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine();
+						Console.WriteLine("!!! Invalid input: Please choose a number from 1 to 10 only !!!");
+						Console.ForegroundColor = ConsoleColor.White;
+						colorSelectionSatisfied1 = false;
+					}else if(colorSelectionSatisfied1 == true){
+						hasChosenCustomColor1 = true;
+					}
+				}				
+			}
+
+			while(willChooseCustomColor2 == false){ 	
+				Console.WriteLine();
+				Console.WriteLine("Tic-Tac-Toe");	
+				Console.WriteLine();		
+				Console.WriteLine("Current Colors:");
+				Console.WriteLine("Player 1: " + characterColorOptions[player1ColorNum]);
+				Console.WriteLine("Player 2: " + characterColorOptions[player2ColorNum]);
+				
+				Console.WriteLine();
+
+				Console.WriteLine("Would you like to choose a custom color for player 2?");
+				Console.WriteLine("1 = Yes | 0 = No");
+				Console.Write("Enter your choice: ");
+				userInput = Console.ReadLine();
+
+				if(userInput != "1" && userInput != "0"){
+					Console.Beep();
+					Console.Beep();
+					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine();
+					Console.WriteLine("!!! Invalid input: Please choose either 1 or 0 only !!!");
+					Console.ForegroundColor = ConsoleColor.White;
+				}else if(userInput == "1"){
+					willChooseCustomColor2 = true;
+				}else{
+					break;
+				}
+			}
+
+			if(willChooseCustomColor2 == true){				
+
+				while(hasChosenCustomColor2 == false){
+					bool colorSelectionSatisfied2 = true;
+					bool color2ExceptionHandled = false;
+					Console.WriteLine();
+					Console.WriteLine("Choices:");
+					for(int loop = 0; loop <= 8; loop++){
+						Console.WriteLine((loop+1) + ". " + characterColorOptions[loop]);
+					}
+					Console.WriteLine();
+					Console.Write("Choose a color for player 2: ");
+					try{
+						player2ColorNum = (Convert.ToInt32(Console.ReadLine())-1);
+					}catch(System.FormatException){
+						Console.WriteLine();
+						Console.Beep();
+						Console.Beep();
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine();
+						Console.WriteLine("!!! Invalid input: Please choose a number from 1 to 10 only !!!");
+						Console.ForegroundColor = ConsoleColor.White;
+						colorSelectionSatisfied2 = false;
+						color2ExceptionHandled = true;
+					}catch(System.OverflowException){
+						Console.WriteLine();
+						Console.Beep();
+						Console.Beep();
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine();
+						Console.WriteLine("!!! Invalid input: Please choose a number from 1 to 10 only !!!");
+						Console.ForegroundColor = ConsoleColor.White;
+						colorSelectionSatisfied2 = false;
+						color2ExceptionHandled = true;
+					}					
+					
+					if((player2ColorNum < 0 || player2ColorNum > 8) && color2ExceptionHandled == false){
+						Console.WriteLine();
+						Console.Beep();
+						Console.Beep();
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine();
+						Console.WriteLine("!!! Invalid input: Please choose a number from 1 to 10 only !!!");
+						Console.ForegroundColor = ConsoleColor.White;
+						colorSelectionSatisfied2 = false;
+					}else if(player1ColorNum == player2ColorNum){
+						Console.WriteLine();
+						Console.Beep();
+						Console.Beep();
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine();
+						Console.WriteLine("!!! Invalid input: Player 1 and 2 cannot have the same color !!!");
+						Console.ForegroundColor = ConsoleColor.White;
+						colorSelectionSatisfied2 = false;
+					}else if(colorSelectionSatisfied2 == true){
+						hasChosenCustomColor2 = true;
+					}
+				}				
+			}
+
 			while(gameOver == 0){				      
 
 				Console.WriteLine();
@@ -380,13 +571,13 @@ namespace Tic_Tac_Toe{
 				// Turn numbers with even values are turns for player X while turn numbers with odd values are for player O.
 				if(turnNumber%2 == 0){
 					Console.Write("Player ");
-					Console.ForegroundColor = ConsoleColor.DarkYellow;
+					Console.ForegroundColor = characterColorOptions[player1ColorNum];
 					Console.Write(player1Character);
 					Console.ForegroundColor = ConsoleColor.White;
 					Console.WriteLine("'s Turn");
 				}else{
 					Console.Write("Player ");
-					Console.ForegroundColor = ConsoleColor.Blue;
+					Console.ForegroundColor = characterColorOptions[player2ColorNum];
 					Console.Write(player2Character);
 					Console.ForegroundColor = ConsoleColor.White;
 					Console.WriteLine("'s Turn");
@@ -402,12 +593,12 @@ namespace Tic_Tac_Toe{
 					}
 
 					if(tile[loop] == player1Character){
-						Console.ForegroundColor = ConsoleColor.DarkYellow;
+						Console.ForegroundColor = characterColorOptions[player1ColorNum];
 						Console.Write("  " + tile[loop] + "  ");
 						Console.ForegroundColor = ConsoleColor.White;
 						Console.Write("|");
 					}else if(tile[loop] == player2Character){
-						Console.ForegroundColor = ConsoleColor.Blue;
+						Console.ForegroundColor = characterColorOptions[player2ColorNum];
 						Console.Write("  " + tile[loop] + "  ");
 						Console.ForegroundColor = ConsoleColor.White;
 						Console.Write("|");
