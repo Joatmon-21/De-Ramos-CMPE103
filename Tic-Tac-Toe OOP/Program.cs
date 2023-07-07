@@ -1,14 +1,8 @@
-﻿/* 
-Written By: Dan Jandel C. De Ramos
-Polytechnic University of the Philippines Biñan Campus
-BSCpE 1-1 2nd Semester
-*/
-
-using System;
+﻿using System;
 using System.Text;
 using System.Collections.Generic;
 
-namespace Tic_Tac_Toe{
+namespace Tic_Tac_Toe_OOP{
 
     class Program{
 
@@ -90,14 +84,69 @@ namespace Tic_Tac_Toe{
 
         }
 
-		static string GetUserInput(){
+        static void Main(string[] args){
+            Tile tile1 = new Tile
+            {
+                tileValue = "1",
+                colorNum = 1,
+                isFilled = false
+            };
 
-			return Console.ReadLine();
-		}
+            Tile tile2 = new Tile
+            {
+                tileValue = "2",
+                colorNum = 1,
+                isFilled = false
+            };
 
-		
+            Tile tile3 = new Tile
+            {
+                tileValue = "3",
+                colorNum = 1,
+                isFilled = false
+            };
 
-        static void Main(string[]args){			
+            Tile tile4 = new Tile
+            {
+                tileValue = "4",
+                colorNum = 1,
+                isFilled = false
+            };
+
+            Tile tile5 = new Tile
+            {
+                tileValue = "5",
+                colorNum = 1,
+                isFilled = false
+            };
+
+            Tile tile6 = new Tile
+            {
+                tileValue = "6",
+                colorNum = 1,
+                isFilled = false
+            };
+
+            Tile tile7 = new Tile
+            {
+                tileValue = "7",
+                colorNum = 1,
+                isFilled = false
+            };
+
+            Tile tile8 = new Tile
+            {
+                tileValue = "8",
+                colorNum = 1,
+                isFilled = false
+            };
+
+            Tile tile9 = new Tile
+            {
+                tileValue = "9",
+                colorNum = 1,
+                isFilled = false
+            };
 
             ConsoleColor[] characterColorOptions =  new ConsoleColor[] {
 			ConsoleColor.Blue,			//0
@@ -1233,6 +1282,6 @@ namespace Tic_Tac_Toe{
 					}
 				}
 			}
-		}
-	}
+        }
+    }
 }
