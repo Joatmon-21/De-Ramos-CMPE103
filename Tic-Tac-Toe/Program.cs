@@ -10,8 +10,8 @@ using System.Collections.Generic;
 
 namespace Tic_Tac_Toe{
 
-    class Program{
-
+    class Program{        
+        
         static List<string> tile = new List<string>();
         static List<int> tileStatus = new List<int>();
 
@@ -90,16 +90,9 @@ namespace Tic_Tac_Toe{
 
         }
 
-		static string GetUserInput(){
+        static void Main(string[]args){
 
-			return Console.ReadLine();
-		}
-
-		
-
-        static void Main(string[]args){			
-
-            ConsoleColor[] characterColorOptions =  new ConsoleColor[] {
+			ConsoleColor[] characterColorOptions =  new ConsoleColor[] {
 			ConsoleColor.Blue,			//0
 			ConsoleColor.Cyan,			//1
 			ConsoleColor.DarkBlue,		//2
@@ -137,7 +130,7 @@ namespace Tic_Tac_Toe{
 
             initializeLists();                                			          
 
-			Console.Clear();			
+			Console.Clear();
 
 			while(willChooseCustomCharacter1 == false){ 	
 				Console.WriteLine();
