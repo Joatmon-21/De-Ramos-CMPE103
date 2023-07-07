@@ -17,3 +17,7 @@
 
 - Try adding documentation
 > It's a good thing to have so why not try? At least you can sleep tightly knowing you aren't affected by the memes mentioning no documentation on your code :sassy_man:
+
+## Pokedex
+### Planned Features:
+- RestAPI call to obtain Pokemon info
