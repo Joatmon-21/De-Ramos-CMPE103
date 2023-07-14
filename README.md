@@ -20,5 +20,6 @@
 
 ## Pokedex
 ### Planned Features:
-- ![](https://progress-bar.dev/5/)RestAPI call to obtain Pokemon info
+- ![](https://progress-bar.dev/100/)RestAPI call to obtain Pokemon info
+- - ![](https://progress-bar.dev/0/)Deseralize JSON to C#
 - ![](https://progress-bar.dev/0/)Create your own team of Pokemon
