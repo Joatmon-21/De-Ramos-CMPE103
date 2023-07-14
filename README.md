@@ -4,8 +4,8 @@
 
 ### Planned Features:
 - ![](https://progress-bar.dev/100/) Custom Character Selection
-- ![](https://progress-bar.dev/95/) Custom Color Selection
-  > Will still test for additional bugs
+- ![](https://progress-bar.dev/100/) Custom Color Selection
+  > ~~Will still test for additional bugs~~
 - [ ] Add an option to play against the computer with varying difficulties:
   - ![](https://progress-bar.dev/0/) Easy - Randomizer
   - ![](https://progress-bar.dev/0/) Medium
@@ -20,4 +20,5 @@
 
 ## Pokedex
 ### Planned Features:
-- RestAPI call to obtain Pokemon info
+- ![](https://progress-bar.dev/5/)RestAPI call to obtain Pokemon info
+- ![](https://progress-bar.dev/0/)Create your own team of Pokemon
