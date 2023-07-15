@@ -5,6 +5,10 @@ using Newtonsoft.Json;
 
 namespace Pokedex_EX{
 
+    class Pokemon2{
+        public int weight {get;set;}
+    }
+
     class Program{                
 
         static Pokedex pokedex;
@@ -33,27 +37,34 @@ namespace Pokedex_EX{
 
             string chosenPokemon;
 
-            Console.Clear();
+            string finalURL;
 
-            
+            Console.Clear();            
 
             bool exit = false;
             Pokemons();
 
-            chosenPokemon = Console.ReadLine();
+            while(exit == false){        
+                finalURL = url;        
 
-            url += chosenPokemon.ToLower();          
+                chosenPokemon = Console.ReadLine();
+                
+                finalURL = url + chosenPokemon.ToLower();
 
-            client = new RestClient(url);
-            request = new RestRequest();
-            response = client.Get(request);
-  
+                client = new RestClient(finalURL);
+                request = new RestRequest();
+                response = client.Get(request);
 
-            Console.WriteLine(response.Content);
+                var result = response.Content;
 
-            Console.Read();
+                var poke = JsonConvert.DeserializeObject<Pokemon2>(result);     
+                Console.WriteLine(poke.weight);
 
-            var result = response.Content;
+                if(chosenPokemon == "0"){
+                    exit = true;
+                }
+            }
+                           
 
             while(exit == false){
                 try{                                        
