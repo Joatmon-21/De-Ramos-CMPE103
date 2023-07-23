@@ -22,12 +22,24 @@ namespace Pokedex_EX2{
         public string name {get;set;}
     }
 
+    public class Abilities{
+        public AbilityName ability {get;set;}
+    }
+
+    public class AbilityName{
+        public string name {get;set;}
+    }
+
     public class Pokemon
     {
         public string name {get;set;}
         public int order {get;set;}
+        public int height {get;set;}
         public int weight {get;set;}
-        public List<Types> types {get;set;}
         public List<Stats> stats {get;set;}
+        public List<Types> types {get;set;}
+        public List<Abilities> abilities {get;set;}
+        
+        
     }
 }
